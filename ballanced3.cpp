@@ -8,6 +8,9 @@
 []investigate hardware options for creation of circuits 
 
 */
+
+// cgw: add comments!
+
 #include<iostream>
 using namespace std; 
 
