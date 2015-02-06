@@ -26,6 +26,10 @@ class Trit{
 			cout<< trit_val[i];
 		}
 		cout<<endl;
+		for (int i=size-1; i>=0; i--){
+			cout<< base3[i];
+		}
+		cout<<endl;
 	}
 	
 	private:
