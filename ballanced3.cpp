@@ -89,7 +89,7 @@ int main() { // test program
 	long long int a;
 	char c='y';
 	while(c=='y'){
-	cout<< "enter value to be converted between +-3812798742493 (16 trits signed)"<<endl;
+	cout<< "enter value to be converted between +-3812798742493 (27 trits signed)"<<endl;
 	cout<<":";
 	cin>> a;
 	
