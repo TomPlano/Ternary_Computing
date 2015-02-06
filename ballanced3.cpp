@@ -44,7 +44,7 @@ class Trit{
 		return val;
 	}
 	long long int ipow(long long int base, long long int exp){  //googled power function, was having trouble with the cmath library. Needs to be removed 
-	int result = 1;
+	long long int result = 1;
     while (exp){
         if (exp & 1)
             result *= base;
@@ -53,8 +53,8 @@ class Trit{
     }
     return result;
 }
-	int count=size;
-	int base3[size];  //array to keep final answer of conversion 
+	long long int count=size;
+	long long int base3[size];  //array to keep final answer of conversion 
 	void int_to_base3(long long int input_val){
 		base3[count]=input_val/(ipow(3,count));  // value to be converted/ 3^current place (1's, 3's, 9's, 27's, etc) = base three value for that place
 		input_val=input_val%(ipow(3,count)); 	// next input value is the remainder of  the previous line
@@ -89,7 +89,7 @@ int main() { // test program
 	long long int a;
 	char c='y';
 	while(c=='y'){
-	cout<< "enter value to be converted between +-3.81279x10^12 (16 trits signed)"<<endl;
+	cout<< "enter value to be converted between +-3812798742493 (16 trits signed)"<<endl;
 	cout<<":";
 	cin>> a;
 	
