@@ -19,7 +19,13 @@ int const size=16; // size of your RAM, 16 Trits
 class Trit{
 	public:
 	Trit(int x){
-	int_to_base3(x);
+		if (x<0){
+			x=ipow(3,size)-absol(x);// converts requested value into its mapped + value
+			int_to_base3(x);
+		}
+		else{
+			int_to_base3(x);
+		}
 	}
 	void output(){
 		for (int i=size-1; i>=0; i--){
@@ -33,6 +39,10 @@ class Trit{
 	}
 	
 	private:
+	int absol(int val){ // down and dirty abs function 
+		val=-val;
+		return val;
+	}
 	int ipow(int base, int exp){  //googled power function, was having trouble with the cmath library. Needs to be removed 
     int result = 1;
     while (exp){
@@ -77,7 +87,7 @@ class Trit{
 int main() { // test program
 	
 	int a;
-	cout<< "enter value to be converted less then 43046721 and greater then 0 (16 trits unsigned)"<<endl;
+	cout<< "enter value to be converted between +-21523360 (16 trits signed)"<<endl;
 	cout<<":";
 	cin>> a;
 	
