@@ -11,22 +11,28 @@ Trit::Trit(long long int x){
 			int_to_base3(x);
 		}
 	}
-void Trit::output (){// pretty formatting......highly irrelevant
-		for (int i=size-1; i>=0; i--){
-			if ((i+1)%3==0 && i+1!=size){
-			cout<< " ";	
-			}
-			cout<< trit_val[i];
-		}
-		cout<<endl;
-		for (int i=size-1; i>=0; i--){
-			if ((i+1)%3==0 && i+1!=size){
-			cout<< " ";	
-			}
-			cout<< base3[i];
-		}
-		cout<<endl;
+void Trit::output_base3 (){// pretty formatting......highly irrelevant
+	for (int i=0; i<size; i++){
+		cout<< base3[i];
 	}
+		cout<<endl;
+		return;
+}
+void Trit::output_tritval(){
+	for (int i=0; i<size; i++){
+		cout<< trit_val[i];
+	}
+		cout<<endl;
+		return;
+}
+void Trit::output_result(){
+	for (int i=0; i<size; i++){
+		cout<< result[i];
+	}
+		cout<<endl;
+		return;
+}
+
 long long int Trit::absol (long long int val){ // down and dirty abs function 
 		val=-val;
 		return val;
@@ -41,17 +47,20 @@ long long int Trit::ipow(long long int base, long long int exp){  //googled powe
     }
     return result;
 }
+
  void Trit::int_to_base3(long long int input_val){
 		base3[count]=input_val/(ipow(3,count));  // value to be converted/ 3^current place (1's, 3's, 9's, 27's, etc) = base three value for that place
 		input_val=input_val%(ipow(3,count)); 	// next input value is the remainder of  the previous line
 		count--;
 		if (count<0){  //if the conversion is finished...
+			reverse();
 			base3_to_ballanced3();
 			return;
 		}
 		else{
 			int_to_base3(input_val); // recur into function 
 		}
+		return;
 	}
 void Trit::base3_to_ballanced3(){
 		for(int i=0; i<size; i++){
@@ -65,7 +74,21 @@ void Trit::base3_to_ballanced3(){
 				trit_val[i]='0';
 			}	
 		}
+		return;
 	}
-
-
+void Trit::add(Trit second){
+	
+	
+	
+	
+}
+void Trit::reverse(){
+	int temp[size];
+	for(int i=0;i<size;i++){
+		temp[(size-1)-i]=base3[i];
+	}
+	for(int i=0;i<size;i++){
+		base3[i]=temp[i];
+	}
+}
 
