@@ -3,7 +3,7 @@
 [x]convert from decimal to ternary (singed)// investigate 2s complement (3s complement??)
 [x]create hierarchy of trits, tryets, so on 
 [x]balanced info
-[]signed + - 
+[x]signed + - 
 [] signed / *
 []build classes for parts of a CPU (register, ALU, FPU, memory, etc)
 
@@ -19,15 +19,22 @@ using namespace std;
 int main() { // test program
 	
 	long long int a;
+	long long int b;
 	char c='y';
 	while(c=='y'){
-	cout<< "enter value to be converted between +-3812798742493 (27 trits signed)"<<endl;
-	cout<<":";
+	cout<< "enter values to be added between +-3812798742493 (27 trits signed)"<<endl;
+	cout<<"1:";
 	cin>> a;
+	cout<<"2:";
+	cin>> b;
 	
-	Trit test(a);
-	test.output_base3();
-	test.output_tritval();
+	
+	Trit first(a);
+	
+	Trit second (b);
+	
+	first.add_subtract(second);
+	first.output_result();
 	cout<<"Run again? Y/n: ";
 	cin>> c;
 	}

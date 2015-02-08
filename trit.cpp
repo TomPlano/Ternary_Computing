@@ -11,7 +11,16 @@ Trit::Trit(long long int x){
 			int_to_base3(x);
 		}
 	}
-void Trit::output_base3 (){// pretty formatting......highly irrelevant
+void Trit::output_base3 (){// pretty formatting......highly irrelevant	
+	int temp[size];
+	for(int i=0;i<size;i++){//reverses array for pretty output
+			temp[(size-1)-i]=base3[i];
+	}
+	for(int i=0;i<size;i++){
+			base3[i]=temp[i];
+	}
+
+////
 	for (int i=0; i<size; i++){
 		cout<< base3[i];
 	}
@@ -19,6 +28,14 @@ void Trit::output_base3 (){// pretty formatting......highly irrelevant
 	return;
 }
 void Trit::output_tritval(){
+	int temp[size];
+	for(int i=0;i<size;i++){//reverses array for pretty output
+			temp[(size-1)-i]=trit_val[i];
+	}
+	for(int i=0;i<size;i++){
+			trit_val[i]=temp[i];
+	}
+	////
 	for (int i=0; i<size; i++){
 		cout<< trit_val[i];
 	}
@@ -26,6 +43,13 @@ void Trit::output_tritval(){
 	return;
 }
 void Trit::output_result(){
+	int temp[size];
+	for(int i=0;i<size;i++){//reverses array for pretty output
+			temp[(size-1)-i]=result[i];
+	}
+	for(int i=0;i<size;i++){
+			result[i]=temp[i];
+	}
 	for (int i=0; i<size; i++){
 		cout<< result[i];
 	}
@@ -48,12 +72,11 @@ long long int Trit::ipow(long long int base, long long int exp){  //googled powe
     return result;
 }
 
- void Trit::int_to_base3(long long int input_val){
+ void Trit::int_to_base3(long long int input_val){ //array[0]=LSB array[26]=MSB
 		base3[count]=input_val/(ipow(3,count));  // value to be converted/ 3^current place (1's, 3's, 9's, 27's, etc) = base three value for that place
 		input_val=input_val%(ipow(3,count)); 	// next input value is the remainder of  the previous line
 		count--;
 		if (count<0){  //if the conversion is finished...
-			reverse();
 			base3_to_ballanced3();
 			return;
 		}
@@ -76,19 +99,71 @@ void Trit::base3_to_ballanced3(){
 		}
 		return;
 	}
-void Trit::add(Trit second){
 	
-	
-	
-	
-}
-void Trit::reverse(){
-	int temp[size];
-	for(int i=0;i<size;i++){
-		temp[(size-1)-i]=base3[i];
+void Trit::add_subtract(Trit second){
+	char carry_val='0';
+	for (int i=0;i<size; i++){
+		if (trit_val[i]=='0' && second.trit_val[i]=='0'&& carry_val=='0')// 0 + 0 = 0
+			result[i]='0';
+		else if (trit_val[i]=='0' && second.trit_val[i]=='-'&& carry_val=='0')// 0 + - = -
+			result[i]='-';
+		else if (trit_val[i]=='0' && second.trit_val[i]=='+'&& carry_val=='0')// 0 + + = +
+			result[i]='+';
+		else if (trit_val[i]=='-' && second.trit_val[i]=='-'&& carry_val=='0')// - + - = +
+			result[i]='+';
+		else if (trit_val[i]=='-' && second.trit_val[i]=='+'&& carry_val=='0'){// - + + = 0 carry -
+			result[i]='0';
+			carry_val='-';
+		}
+		else if (trit_val[i]=='+' && second.trit_val[i]=='+'&& carry_val=='0'){// + + + = - carry -
+			result[i]='-';
+			carry_val='-';
+		}
+		/////////////////
+		else if (trit_val[i]=='0' && second.trit_val[i]=='0'&& carry_val=='-')
+			result[i]='-';
+		else if (trit_val[i]=='0' && second.trit_val[i]=='-'&& carry_val=='-')
+			result[i]='+';
+		else if (trit_val[i]=='0' && second.trit_val[i]=='+'&& carry_val=='-'){
+			result[i]='0';
+			carry_val='-';
+		}
+		else if (trit_val[i]=='-' && second.trit_val[i]=='-'&& carry_val=='-'){
+			result[i]='0';
+			carry_val='-';
+		}
+		else if (trit_val[i]=='-' && second.trit_val[i]=='+'&& carry_val=='-'){
+			result[i]='-';
+			carry_val='-';
+		}
+		else if (trit_val[i]=='+' && second.trit_val[i]=='+'&& carry_val=='-'){
+			result[i]='+';
+			carry_val='-';
+		}
+		//////////////////
+		else if (trit_val[i]=='0' && second.trit_val[i]=='0'&& carry_val=='+')
+			result[i]='+';
+		else if (trit_val[i]=='0' && second.trit_val[i]=='-'&& carry_val=='+'){
+			result[i]='0';
+			carry_val='-';
+		}
+		else if (trit_val[i]=='0' && second.trit_val[i]=='+'&& carry_val=='+'){
+			result[i]='-';
+			carry_val='-';
+		}
+		else if (trit_val[i]=='-' && second.trit_val[i]=='-'&& carry_val=='+'){
+			result[i]='-';
+			carry_val='-';
+		}
+		else if (trit_val[i]=='-' && second.trit_val[i]=='+'&& carry_val=='+'){
+			result[i]='+';
+			carry_val='-';
+		}
+		else{
+			result[i]='0';
+			carry_val='+';
+		}
+		
+		
 	}
-	for(int i=0;i<size;i++){
-		base3[i]=temp[i];
-	}
 }
-
