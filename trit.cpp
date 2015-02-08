@@ -103,15 +103,23 @@ void Trit::base3_to_ballanced3(){
 void Trit::add_subtract(Trit second){
 	char carry_val='0';
 	for (int i=0;i<size; i++){
-		if (trit_val[i]=='0' && second.trit_val[i]=='0'&& carry_val=='0')// 0 + 0 = 0
+		if (trit_val[i]=='0' && second.trit_val[i]=='0'&& carry_val=='0'){// 0 + 0 = 0
 			result[i]='0';
-		else if (trit_val[i]=='0' && second.trit_val[i]=='-'&& carry_val=='0')// 0 + - = -
+			carry_val='0';
+		}
+		else if ((trit_val[i]=='0' && second.trit_val[i]=='-')||(trit_val[i]=='-' && second.trit_val[i]=='0')&& carry_val=='0'){// 0 + - = -
 			result[i]='-';
-		else if (trit_val[i]=='0' && second.trit_val[i]=='+'&& carry_val=='0')// 0 + + = +
+			carry_val='0';
+		}
+		else if ((trit_val[i]=='0' && second.trit_val[i]=='+')||(trit_val[i]=='+' && second.trit_val[i]=='0')&& carry_val=='0'){// 0 + + = +
 			result[i]='+';
-		else if (trit_val[i]=='-' && second.trit_val[i]=='-'&& carry_val=='0')// - + - = +
+			carry_val='0';
+		}		
+		else if ((trit_val[i]=='-' && second.trit_val[i]=='-')&& carry_val=='0'){// - + - = +
 			result[i]='+';
-		else if (trit_val[i]=='-' && second.trit_val[i]=='+'&& carry_val=='0'){// - + + = 0 carry -
+			carry_val='0';
+		}
+		else if ((trit_val[i]=='-' && second.trit_val[i]=='+')||(trit_val[i]=='+' && second.trit_val[i]=='-')&& carry_val=='0'){// - + + = 0 carry -
 			result[i]='0';
 			carry_val='-';
 		}
@@ -120,11 +128,15 @@ void Trit::add_subtract(Trit second){
 			carry_val='-';
 		}
 		/////////////////
-		else if (trit_val[i]=='0' && second.trit_val[i]=='0'&& carry_val=='-')
+		else if (trit_val[i]=='0' && second.trit_val[i]=='0'&& carry_val=='-'){
 			result[i]='-';
-		else if (trit_val[i]=='0' && second.trit_val[i]=='-'&& carry_val=='-')
+			carry_val='0';
+		}
+		else if ((trit_val[i]=='0' && second.trit_val[i]=='-')||(trit_val[i]=='-' && second.trit_val[i]=='0')&& carry_val=='-'){
 			result[i]='+';
-		else if (trit_val[i]=='0' && second.trit_val[i]=='+'&& carry_val=='-'){
+			carry_val='0';
+		}
+		else if ((trit_val[i]=='0' && second.trit_val[i]=='+')||(trit_val[i]=='+' && second.trit_val[i]=='0')&& carry_val=='-'){
 			result[i]='0';
 			carry_val='-';
 		}
@@ -132,7 +144,7 @@ void Trit::add_subtract(Trit second){
 			result[i]='0';
 			carry_val='-';
 		}
-		else if (trit_val[i]=='-' && second.trit_val[i]=='+'&& carry_val=='-'){
+		else if ((trit_val[i]=='-' && second.trit_val[i]=='+')||(trit_val[i]=='+' && second.trit_val[i]=='-')&& carry_val=='-'){
 			result[i]='-';
 			carry_val='-';
 		}
@@ -141,13 +153,15 @@ void Trit::add_subtract(Trit second){
 			carry_val='-';
 		}
 		//////////////////
-		else if (trit_val[i]=='0' && second.trit_val[i]=='0'&& carry_val=='+')
+		else if (trit_val[i]=='0' && second.trit_val[i]=='0'&& carry_val=='+'){
 			result[i]='+';
-		else if (trit_val[i]=='0' && second.trit_val[i]=='-'&& carry_val=='+'){
+			carry_val='0';
+		}
+		else if ((trit_val[i]=='0' && second.trit_val[i]=='-')||(trit_val[i]=='-' && second.trit_val[i]=='0')&& carry_val=='+'){
 			result[i]='0';
 			carry_val='-';
 		}
-		else if (trit_val[i]=='0' && second.trit_val[i]=='+'&& carry_val=='+'){
+		else if ((trit_val[i]=='0' && second.trit_val[i]=='+')||(trit_val[i]=='+' && second.trit_val[i]=='0')&& carry_val=='+'){
 			result[i]='-';
 			carry_val='-';
 		}
@@ -155,7 +169,7 @@ void Trit::add_subtract(Trit second){
 			result[i]='-';
 			carry_val='-';
 		}
-		else if (trit_val[i]=='-' && second.trit_val[i]=='+'&& carry_val=='+'){
+		else if ((trit_val[i]=='-' && second.trit_val[i]=='+')||(trit_val[i]=='+' && second.trit_val[i]=='-')&& carry_val=='+'){
 			result[i]='+';
 			carry_val='-';
 		}

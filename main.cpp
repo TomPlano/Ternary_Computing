@@ -35,6 +35,10 @@ int main() { // test program
 	
 	first.add_subtract(second);
 	first.output_result();
+	
+	first.output_tritval();
+	cout<<endl;
+	second.output_tritval();
 	cout<<"Run again? Y/n: ";
 	cin>> c;
 	}
