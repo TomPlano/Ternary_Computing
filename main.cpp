@@ -26,7 +26,8 @@ int main() { // test program
 	cin>> a;
 	
 	Trit test(a);
-	test.output();
+	test.output_base3();
+	test.output_tritval();
 	cout<<"Run again? Y/n: ";
 	cin>> c;
 	}

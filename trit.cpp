@@ -15,22 +15,22 @@ void Trit::output_base3 (){// pretty formatting......highly irrelevant
 	for (int i=0; i<size; i++){
 		cout<< base3[i];
 	}
-		cout<<endl;
-		return;
+	cout<<endl;
+	return;
 }
 void Trit::output_tritval(){
 	for (int i=0; i<size; i++){
 		cout<< trit_val[i];
 	}
-		cout<<endl;
-		return;
+	cout<<endl;
+	return;
 }
 void Trit::output_result(){
 	for (int i=0; i<size; i++){
 		cout<< result[i];
 	}
-		cout<<endl;
-		return;
+	cout<<endl;
+	return;
 }
 
 long long int Trit::absol (long long int val){ // down and dirty abs function 
