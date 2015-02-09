@@ -12,45 +12,21 @@ Trit::Trit(long long int x){
 		}
 	}
 void Trit::output_base3 (){// pretty formatting......highly irrelevant	
-	int temp[size];
-	for(int i=0;i<size;i++){//reverses array for pretty output
-			temp[(size-1)-i]=base3[i];
-	}
-	for(int i=0;i<size;i++){
-			base3[i]=temp[i];
-	}
-
-////
-	for (int i=0; i<size; i++){
+	for (int i=size-1; i>=0; i--){
 		cout<< base3[i];
 	}
 	cout<<endl;
 	return;
 }
 void Trit::output_tritval(){
-	int temp[size];
-	for(int i=0;i<size;i++){//reverses array for pretty output
-			temp[(size-1)-i]=trit_val[i];
-	}
-	for(int i=0;i<size;i++){
-			trit_val[i]=temp[i];
-	}
-	////
-	for (int i=0; i<size; i++){
+	for (int i=size-1; i>=0; i--){
 		cout<< trit_val[i];
 	}
 	cout<<endl;
 	return;
 }
 void Trit::output_result(){
-	int temp[size];
-	for(int i=0;i<size;i++){//reverses array for pretty output
-			temp[(size-1)-i]=result[i];
-	}
-	for(int i=0;i<size;i++){
-			result[i]=temp[i];
-	}
-	for (int i=0; i<size; i++){
+	for (int i=size-1; i>=0; i--){
 		cout<< result[i];
 	}
 	cout<<endl;

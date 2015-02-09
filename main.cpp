@@ -33,12 +33,15 @@ int main() { // test program
 	
 	Trit second (b);
 	
+
+	cout<<"input 1: ";
+	first.output_tritval();
+	cout<<"input 2: ";
+	second.output_tritval();
 	first.add_subtract(second);
+	cout<<"result : ";
 	first.output_result();
 	
-	first.output_tritval();
-	cout<<endl;
-	second.output_tritval();
 	cout<<"Run again? Y/n: ";
 	cin>> c;
 	}
