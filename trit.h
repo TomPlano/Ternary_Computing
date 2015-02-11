@@ -13,7 +13,7 @@ class Trit{
 	//look up operator overloading
 	//look up tables
 	// maps
-	Trit operator+(Trit & a, Trit & b);
+	//Trit operator+(Trit & a, Trit & b);
 	
 	
 	private:
