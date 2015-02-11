@@ -10,6 +10,10 @@ class Trit{
 	
 	void add_subtract(Trit second);
 	
+	//look up operator overloading
+	//look up tables
+	// maps
+	Trit operator+(Trit & a, Trit & b);
 	
 	
 	private:
