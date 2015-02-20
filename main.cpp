@@ -45,5 +45,7 @@ int main() { // test program
 	cout<<"Run again? Y/n: ";
 	cin>> c;
 	}
+#ifdef _WIN32
 	system("pause");
+#endif
 }
